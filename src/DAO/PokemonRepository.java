@@ -29,23 +29,11 @@ public class PokemonRepository {
 		}
 		return false;
 	}
-
-	public Pokemon getPokemon(Integer id) {
-		Set<Integer> keys = mapPokemon.keySet();
-		try {
-			for (Integer key : keys)
-				if (key != null)
-					if (key == id)
-						return mapPokemon.get(key);
-			throw new Exception("Pokemon id \"" + id + "\" não existe");
-		} catch (Exception e) {
-			System.out.println(e);
-			return null;
-		}
-	}
-
-	public int getId() {
-		return id;
+	
+	public boolean resetMapPokemon() {
+		this.mapPokemon = new HashMap<Integer, Pokemon>();
+		this.id = 0;
+		return true;
 	}
 
 	public boolean addPokemon(String name, String element, Integer attack, Integer defense, Integer hp, Integer speed) {
@@ -67,6 +55,24 @@ public class PokemonRepository {
 		} else {
 			return false;
 		}
+	}
+
+	public Pokemon getPokemon(Integer id) {
+		Set<Integer> keys = mapPokemon.keySet();
+		try {
+			for (Integer key : keys)
+				if (key != null)
+					if (key == id)
+						return mapPokemon.get(key);
+			throw new Exception("Pokemon id \"" + id + "\" não existe");
+		} catch (Exception e) {
+			System.out.println(e);
+			return null;
+		}
+	}
+
+	public int getId() {
+		return id;
 	}
 
 	public boolean findPokemon(int id) {

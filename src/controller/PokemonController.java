@@ -21,12 +21,32 @@ public class PokemonController {
 		}
 		return pokemonController;
 	}
-
+	
+	public int getRepositoryId() {
+		return pokemonRepository.getId();
+	}
+	
 	public boolean seedPokemonRepository() throws IOException {
 		HashMap<Integer, Pokemon> allPokemonsInData = pokemonData.generateMapFromDataPokemon();
 		return pokemonRepository.setMapPokemon(allPokemonsInData);
 	}
+	
+	public HashMap<Integer, Pokemon> getMapPokemon() {
+		return pokemonRepository.getMapPokemon();
+	}
+	
+	public boolean resetMapPokemon() {
+		return pokemonRepository.resetMapPokemon();
+	}	
+	
+	public boolean addPokemon(String name, String element, Integer attack, Integer defense, Integer hp, Integer speed) {
+		return pokemonRepository.addPokemon(name, element, attack, defense, hp, speed);
+	}
 
+	public boolean findPokemon(int id) {
+		return pokemonRepository.findPokemon(id);
+	}
+	
 	public Pokemon getPokemon(int id) {
 		return pokemonRepository.getPokemon(id);
 	}
