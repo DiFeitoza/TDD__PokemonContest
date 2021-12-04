@@ -1,6 +1,7 @@
 package DAO;
 
 import java.util.HashMap;
+import java.util.Set;
 
 import model.Pokemon;
 
@@ -20,15 +21,76 @@ public class PokemonRepository {
 		return mapPokemon;
 	}
 
-	public void setMapPokemon(HashMap<Integer, Pokemon> mapPokemon) {
-		this.mapPokemon = mapPokemon;
+	public boolean setMapPokemon(HashMap<Integer, Pokemon> mapPokemon) {
+		if (mapPokemon != null) {
+			this.mapPokemon = mapPokemon;
+			this.id += mapPokemon.size();
+			return true;
+		}
+		return false;
+	}
+
+	public Pokemon getPokemon(Integer id) {
+		Set<Integer> keys = mapPokemon.keySet();
+		try {
+			for (Integer key : keys)
+				if (key != null)
+					if (key == id)
+						return mapPokemon.get(key);
+			throw new Exception("Pokemon id \"" + id + "\" não existe");
+		} catch (Exception e) {
+			System.out.println(e);
+			return null;
+		}
 	}
 
 	public int getId() {
 		return id;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public boolean addPokemon(String name, String element, Integer attack, Integer defense, Integer hp, Integer speed) {
+		Pokemon newPokemon = new Pokemon();
+
+		boolean boolId = newPokemon.setId(this.id);
+		boolean boolName = newPokemon.setName(name);
+		boolean elem = newPokemon.setElement(element);
+		boolean boolHp = newPokemon.setHp(hp);
+		boolean atk = newPokemon.setAttack(attack);
+		boolean def = newPokemon.setDefense(defense);
+		boolean spd = newPokemon.setSpeed(speed);
+
+		if (boolName && elem && boolId && boolHp && atk && def && spd) {
+			mapPokemon.put(newPokemon.getId(), newPokemon);
+			this.id++;
+			System.out.println(newPokemon.toString());
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public boolean findPokemon(int id) {
+		Pokemon p = getPokemon(id);
+		if (p != null) {
+			System.out.println(p.toString());
+			return true;
+		}
+		return false;
+	}
+
+	public String simpleListPokemon() {
+		StringBuilder builder = new StringBuilder();
+		for (Pokemon p : mapPokemon.values()) {
+			builder.append("Id/Nome " + p.getId() + "-" + p.getName() + "\n");
+		}
+		return builder.toString();
+	}
+
+	public String fullListPokemon() {
+		StringBuilder builder = new StringBuilder();
+		for (Pokemon p : mapPokemon.values()) {
+			builder.append(p.toString());
+		}
+		return builder.toString();
 	}
 }
