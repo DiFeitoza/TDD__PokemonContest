@@ -31,7 +31,7 @@ import model.Pokemon;
  *  		letra(s) minúsculas, com o sem a presença de uma aspa simples ou um ponto
  *  		podendo terminar, tanto a primeira palavra, como a palavra composta,
  *  		ou pelo caracter ♀ ou pelo ♂, mas não por ambos.
- *  ELEMENT: apenas um dos (16) seguintes valores:
+ *  ELEMENT: apenas um dos dezesseis seguintes valores:
  *  	Bug, Dragon, Electric, Fairy, Fighting, Fire,
  *  	Ghost, Grass, Ground, Ice, Normal, Poison, Psychic,
  *  	Rock, Steel, Water;
@@ -336,7 +336,7 @@ class PokemonTest {
 
 	@Test
 	@Order(8)
-	@DisplayName("Test pokemon.toString ")
+	@DisplayName("Test pokemon.toString")
 	void pokemonToString() {
 		assertEquals("Id 1 [Ditto] Normal Atk:2 Def:1 HP:5 Speed:2", pokemon.toString());
 	}

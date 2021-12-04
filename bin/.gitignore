@@ -1,2 +1,7 @@
-/test/
+/DAO/
+/controller/
+/data/
 /model/
+/test/
+/view/
+/Exceptions/

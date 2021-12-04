@@ -21,6 +21,9 @@ public class Pokemon {
 		this.hp = hp;
 		this.speed = speed;
 	}
+	
+	public Pokemon() {
+	}
 
 	public Integer getId() {
 		return id;
@@ -52,22 +55,23 @@ public class Pokemon {
 
 	public boolean setElement(String element) {
 		if(
-			element != "Bug" && 
-			element != "Dragon" && 
-			element != "Electric" && 
-			element != "Fairy" &&
-			element != "Fighting" &&
-			element != "Fire" &&
-			element != "Ghost" &&
-			element != "Grass" &&
-			element != "Ground" &&
-			element != "Ice" &&
-			element != "Normal" &&
-			element != "Poison" &&
-			element != "Psychic" &&
-			element != "Rock" &&
-			element != "Steel" &&
-			element != "Water"
+			element == null ||
+			!element.equals("Bug") && 
+			!element.equals("Dragon") && 
+			!element.equals("Electric") && 
+			!element.equals("Fairy") &&
+			!element.equals("Fighting") &&
+			!element.equals("Fire") &&
+			!element.equals("Ghost") &&
+			!element.equals("Grass") &&
+			!element.equals("Ground") &&
+			!element.equals("Ice") &&
+			!element.equals("Normal") &&
+			!element.equals("Poison") &&
+			!element.equals("Psychic") &&
+			!element.equals("Rock") &&
+			!element.equals("Steel") &&
+			!element.equals("Water")
 		) return false;
 		this.element = element;
 		return true;
