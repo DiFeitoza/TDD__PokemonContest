@@ -1,8 +1,8 @@
 package data;
 
+import java.util.HashMap;
 import java.util.Scanner;
 
-import DAO.PokemonRepository;
 import model.Pokemon;
 
 import java.io.BufferedReader;
@@ -11,12 +11,12 @@ import java.io.IOException;
 
 public class PokemonData {
 	static PokemonData PokemonData;
-    BufferedReader buff;
-    Scanner sc;
-    String input;
+    private BufferedReader buff;
+    private Scanner sc;
+    private String input;
     
     public PokemonData() throws IOException {
-        this.buff = new BufferedReader(new FileReader("../data/pokemon.txt"));
+        this.buff = new BufferedReader(new FileReader("src/data/pokemons.txt"));
         this.sc = new Scanner(System.in);
         this.input = "";
      }
@@ -26,7 +26,6 @@ public class PokemonData {
     		try {
 				PokemonData = new PokemonData();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
     	}
@@ -39,24 +38,48 @@ public class PokemonData {
             return input;
         } else {
             buff.close();
-            return "levante exceção";
+            System.out.println("buffer fechou, linha retornou null");
+            return null;
         }
     }
     
-    Pokemon generateDataPokemon() throws IOException {
+    public HashMap<Integer, Pokemon> generateMapFromDataPokemon() throws IOException {
     	String name, element;
-    	Integer id, hp, atack, defense, speed;
+    	Integer id, hp, attack, defense, speed;  	
+    	HashMap<Integer, Pokemon> allPokemonsInData = new HashMap<Integer, Pokemon>();
     	
-    	name = sc.nextLine();
-    	element = sc.nextLine();
-    	id = Integer.parseInt(sc.nextLine());
-    	hp = Integer.parseInt(sc.nextLine());
-    	atack = Integer.parseInt(sc.nextLine());
-    	defense = Integer.parseInt(sc.nextLine());
-    	speed = Integer.parseInt(sc.nextLine());
+    	int amountOfPokemonInData = Integer.parseInt(nextLine());
     	
-    	Pokemon newPokemon = new Pokemon(id, name, element, hp, atack, defense, speed);
-    	return newPokemon;
+    	System.out.println(amountOfPokemonInData);
+    	
+    	for(int i = 0; i < amountOfPokemonInData; i++) {
+    		Pokemon newPokemon = new Pokemon();
+    		id = Integer.parseInt(nextLine());
+	    	name = nextLine();
+	    	System.out.println(name);
+	    	element = nextLine();
+	    	attack = Integer.parseInt(nextLine());
+	    	defense = Integer.parseInt(nextLine());
+    		hp = Integer.parseInt(nextLine());
+	    	speed = Integer.parseInt(nextLine());
+	    	
+    		boolean boolName = newPokemon.setName(name);
+	    	boolean elem = newPokemon.setElement(element);
+	    	boolean boolId = newPokemon.setId(id);
+	    	boolean boolHp = newPokemon.setHp(hp);
+	    	boolean atk = newPokemon.setAttack(attack);
+	    	boolean def = newPokemon.setDefense(defense);
+	    	boolean spd = newPokemon.setSpeed(speed);
+	    	
+	    	System.out.println(newPokemon.toString());
+	    	
+	    	if(boolName && elem && boolId && boolHp && atk && def && spd)
+	    		allPokemonsInData.put(id, newPokemon);
+	    	else {
+	    		System.out.println("Pokemon de ID '" + id + "' nÃ£o pÃ´de ser carregado do arquivo de dados\n");
+	    	}
+    	}
+    	return allPokemonsInData;
     }
 
     public void close(){
