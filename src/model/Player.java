@@ -11,19 +11,30 @@ public class Player {
 		this.pokemons = pokemons;
 	}
 	
+	public Player() {
+	}
+	
 	public String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public boolean setName(String name) {
+		if(name.length() <= 20 && name != "") {
+			this.name = name;
+			return true;
+		}
+		return false;
 	}
 
 	public ArrayList<Pokemon> getPokemons() {
 		return pokemons;
 	}
 
-	public void setPokemons(ArrayList<Pokemon> pokemons) {
+	public boolean setPokemons(ArrayList<Pokemon> pokemons) {
+		if(pokemons.isEmpty() || pokemons.size() > 6 || pokemons == null) {
+			return false;
+		}
 		this.pokemons = pokemons;
+		return true;
 	}
 }
