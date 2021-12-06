@@ -11,6 +11,7 @@ import java.io.IOException;
 
 public class PokemonData {
 	static PokemonData PokemonData;
+	static HashMap<Integer, Pokemon> allPokemonsInData;
     private BufferedReader buff;
     private Scanner sc;
     private String input;
@@ -43,38 +44,39 @@ public class PokemonData {
         }
     }
     
+    public HashMap<Integer, Pokemon> rebootData() {
+    	return allPokemonsInData;
+    }
+    
     public HashMap<Integer, Pokemon> generateMapFromDataPokemon() throws IOException {
     	String name, element;
     	Integer id, hp, attack, defense, speed;  	
-    	HashMap<Integer, Pokemon> allPokemonsInData = new HashMap<Integer, Pokemon>();
+    	allPokemonsInData = new HashMap<Integer, Pokemon>();
     	
     	int amountOfPokemonInData = Integer.parseInt(nextLine());
-    	
-    	System.out.println(amountOfPokemonInData);
-    	
+    	    	
     	for(int i = 0; i < amountOfPokemonInData; i++) {
     		Pokemon newPokemon = new Pokemon();
+
     		id = Integer.parseInt(nextLine());
 	    	name = nextLine();
-	    	System.out.println(name);
 	    	element = nextLine();
 	    	attack = Integer.parseInt(nextLine());
 	    	defense = Integer.parseInt(nextLine());
     		hp = Integer.parseInt(nextLine());
 	    	speed = Integer.parseInt(nextLine());
 	    	
+	    	boolean boolId = newPokemon.setId(id);
     		boolean boolName = newPokemon.setName(name);
 	    	boolean elem = newPokemon.setElement(element);
-	    	boolean boolId = newPokemon.setId(id);
-	    	boolean boolHp = newPokemon.setHp(hp);
 	    	boolean atk = newPokemon.setAttack(attack);
 	    	boolean def = newPokemon.setDefense(defense);
+	    	boolean boolHp = newPokemon.setHp(hp);
 	    	boolean spd = newPokemon.setSpeed(speed);
-	    	
-	    	System.out.println(newPokemon.toString());
-	    	
-	    	if(boolName && elem && boolId && boolHp && atk && def && spd)
+	    		    	
+	    	if(boolName && elem && boolId && boolHp && atk && def && spd) {
 	    		allPokemonsInData.put(id, newPokemon);
+	    	}
 	    	else {
 	    		System.out.println("Pokemon de ID '" + id + "' não pôde ser carregado do arquivo de dados\n");
 	    	}
