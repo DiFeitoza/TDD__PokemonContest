@@ -26,7 +26,7 @@ public class ChoosePokemonView {
 		return random.nextInt((max - min) + 1) + min;
 	}
 
-	static void amountOfPokemonsToFight() {
+	public static void amountOfPokemonsToFight() {
 		String input = "";
 		int amountOfPokemon = -1;
 

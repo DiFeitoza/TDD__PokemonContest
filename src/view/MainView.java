@@ -9,12 +9,10 @@ public class MainView {
 	private static PokemonController pokemonController = PokemonController.getInstance();
 	private static ChoosePokemonView choosePokemonView = ChoosePokemonView.getInstance();
 	private static FightPokemonView fightPokemonView = FightPokemonView.getInstance();
+	private static Scanner sc = new Scanner(System.in);
+	private static String opt = "s";
 
-	static Scanner sc = new Scanner(System.in);
-	static String opt = "s";
-	static char charOption = '\0';
-
-	static void mainMenu() throws IOException {
+	public static void mainMenu() throws IOException {
 		while (true) {
 			System.out.println("---------( MENU INICIAL )--------- " + "\n" + "\n" + "[S] Lista de Pokemons - Simples"
 					+ "\n" + "[C] Lista de Pokemons - Completa" + "\n" + "[B] Iniciar Batalha" + "\n"
@@ -39,7 +37,7 @@ public class MainView {
 				System.out.println("\n");
 				choosePokemonView.choosePokemonMenu();
 				fightPokemonView.fightPokemonMenu();
-				//pokemonController.rebootRepository();
+				// pokemonController.rebootRepository();
 				return;
 			case "e":
 				System.out.println("\n" + "GoodBye Mestre Pokemon!" + "\n");

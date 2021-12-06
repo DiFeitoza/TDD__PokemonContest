@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test;
 import controller.PokemonController;
 
 class PokemonControllerTest {
-	PokemonController pokemonController;
+	private PokemonController pokemonController;
 
 	@BeforeEach
 	void setUp() throws Exception {

@@ -10,8 +10,8 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class PokemonData {
-	static PokemonData PokemonData;
-	static HashMap<Integer, Pokemon> allPokemonsInData;
+	private static PokemonData PokemonData;
+	private static HashMap<Integer, Pokemon> allPokemonsInData;
     private BufferedReader buff;
     private Scanner sc;
     private String input;

@@ -11,15 +11,15 @@ import model.Pokemon;
 public class FightPokemonView {
 	private static FightPokemonView fightPokemonView;
 	private static BattleController battleController = BattleController.getInstance();
-	ArrayList<String> alivePokemonsP1 = new ArrayList<String>();
-	ArrayList<String> alivePokemonsP2 = new ArrayList<String>();
-	ArrayList<String> winRound = new ArrayList<String>();
-	ArrayList<Integer> winner = new ArrayList<Integer>();
-	ArrayList<Integer> loser = new ArrayList<Integer>();
-	int defeatedPokemonsP1 = 0, defeatedPokemonsP2 = 0;
-	int chooseP1 = -1, chooseP2 = 0;
-	int amountOfPokemon = 0;
-	static Scanner sc = new Scanner(System.in);
+	private ArrayList<String> alivePokemonsP1 = new ArrayList<String>();
+	private ArrayList<String> alivePokemonsP2 = new ArrayList<String>();
+	private ArrayList<String> winRound = new ArrayList<String>();
+	private ArrayList<Integer> winner = new ArrayList<Integer>();
+	private ArrayList<Integer> loser = new ArrayList<Integer>();
+	private int defeatedPokemonsP1 = 0, defeatedPokemonsP2 = 0;
+	private int chooseP1 = -1, chooseP2 = 0;
+	private int amountOfPokemon = 0;
+	private static Scanner sc = new Scanner(System.in);
 
 	public static FightPokemonView getInstance() {
 		if (fightPokemonView == null) {
@@ -33,7 +33,7 @@ public class FightPokemonView {
 		return random.nextInt((max - min) + 1) + min;
 	}
 
-	void printStatusPokemon(Pokemon p) {
+	public void printStatusPokemon(Pokemon p) {
 		System.out.println(p.getName() + "[HP " + p.getHp() + "]");
 	}
 
@@ -149,7 +149,7 @@ public class FightPokemonView {
 		}
 	}
 
-	void itsFight(ArrayList<Pokemon> pokemonsP1, ArrayList<Pokemon> pokemonsP2) {
+	public void itsFight(ArrayList<Pokemon> pokemonsP1, ArrayList<Pokemon> pokemonsP2) {
 		chooseP2 = 0; // dont move it
 		Pokemon pokeFightP1 = pokemonsP1.get(chooseP1);
 		Pokemon pokeFightP2 = pokemonsP2.get(chooseP2);

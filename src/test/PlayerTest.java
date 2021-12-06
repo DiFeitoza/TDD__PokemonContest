@@ -16,7 +16,7 @@ import model.Player;
 import model.Pokemon;
 
 class PlayerTest {
-	Player player;
+	private Player player;
 
 	@BeforeEach
 	void setUp() throws Exception {

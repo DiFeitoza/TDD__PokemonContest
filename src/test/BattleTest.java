@@ -17,7 +17,7 @@ import model.Battle;
 import model.Pokemon;
 
 class BattleTest {
-	Battle battle;
+	private Battle battle;
 
 	@BeforeEach
 	void setUp() throws Exception {

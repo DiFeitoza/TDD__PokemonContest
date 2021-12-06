@@ -18,7 +18,7 @@ import DAO.PokemonRepository;
 import model.Pokemon;
 
 class PokemonRepositoryTest {
-	PokemonRepository pokemonRepository;
+	private PokemonRepository pokemonRepository;
 
 	@BeforeEach
 	void setUp() throws Exception {
