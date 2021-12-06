@@ -1,26 +1,59 @@
 package controller;
 
+import java.util.ArrayList;
+
+import model.Battle;
+import model.Player;
 import model.Pokemon;
 
 public class BattleController {
-	void choosePokemons(Pokemon playerOne, Pokemon playerTwo) {
+	private static BattleController battleController;
+	private Battle battle = Battle.getInstance();
+
+	public static BattleController getInstance() {
+		if (battleController == null) {
+			battleController = new BattleController();
+		}
+		return battleController;
 	}
 
-	void compareType(float damageMultiplier, String type1, String type2) {
+	public int getCountFights() {
+		return battle.getCountFights();
 	}
 
-	void attakDamage(int typeAtack, float damageMultiplier, Pokemon pokemonAtack, Pokemon pokemonDefense) {
+	public boolean setCountFights(int countFights) {
+		return battle.setCountFights(countFights);
 	}
 
-	void printStatusBattle(Pokemon pokemonStatus, int i) {
-	}
-	
-	void simpleListPokemon() {
-	}
-	
-	void fullListPokemon() {
+	public int getAmountOfPokemon() {
+		return battle.getAmountOfPokemon();
 	}
 
-	void menuBattle() {
+	public boolean setAmountOfPokemon(int amountOfPokemon) {
+		return battle.setAmountOfPokemon(amountOfPokemon);
+	}
+
+	public Double damageMultiplier(String type1, String type2) {
+		return battle.damageMultiplier(type1, type2);
+	}
+
+	public void attackDamage(double mult, Pokemon pokeAttack, Pokemon pokeDefense) {
+		battle.attackDamage(mult, pokeAttack, pokeDefense);
+	}
+
+	public Player getPlayerOne() {
+		return battle.getPlayerOne();
+	}
+
+	public boolean setPlayerOne(String name, ArrayList<Pokemon> pokemons) {
+		return battle.setPlayerOne(name, pokemons);
+	}
+
+	public Player getPlayerTwo() {
+		return battle.getPlayerTwo();
+	}
+
+	public boolean setPlayerTwo(String name, ArrayList<Pokemon> pokemons) {
+		return battle.setPlayerTwo(name, pokemons);
 	}
 }
