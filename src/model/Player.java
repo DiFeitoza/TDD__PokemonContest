@@ -5,21 +5,21 @@ import java.util.ArrayList;
 public class Player {
 	String name;
 	ArrayList<Pokemon> pokemons;
-	
+
 	public Player(String name, ArrayList<Pokemon> pokemons) {
 		this.name = name;
 		this.pokemons = pokemons;
 	}
-	
+
 	public Player() {
 	}
-	
+
 	public String getName() {
 		return name;
 	}
 
 	public boolean setName(String name) {
-		if(name.length() <= 20 && name != "") {
+		if (name != null && name.length() <= 20 && name != "") {
 			this.name = name;
 			return true;
 		}
@@ -31,7 +31,7 @@ public class Player {
 	}
 
 	public boolean setPokemons(ArrayList<Pokemon> pokemons) {
-		if(pokemons.isEmpty() || pokemons.size() > 6 || pokemons == null) {
+		if (pokemons.isEmpty() || pokemons.size() > 6 || pokemons == null) {
 			return false;
 		}
 		this.pokemons = pokemons;

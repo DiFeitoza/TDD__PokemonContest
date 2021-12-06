@@ -1,6 +1,10 @@
 package test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.HashMap;
 
@@ -72,7 +76,7 @@ class PokemonRepositoryTest {
 		assertEquals(1, pokemonRepository.getId());
 
 	}
-	
+
 	// ADD POKEMON [null attribute]
 
 	@Test
@@ -81,7 +85,7 @@ class PokemonRepositoryTest {
 	void AddPokemonWithAnyAttributeNull1() {
 		assertFalse(pokemonRepository.addPokemon(null, "Fire", 10, 10, 100, 5));
 	}
-	
+
 	@Test
 	@Order(3)
 	@DisplayName("Add 'any attribute null [2]' PokemonRepository")
@@ -89,49 +93,49 @@ class PokemonRepositoryTest {
 		assertFalse(pokemonRepository.addPokemon("Ponita", null, 10, 10, 100, 5));
 
 	}
-	
+
 	@Test
 	@Order(3)
 	@DisplayName("Add 'any attribute null [3]' PokemonRepository")
 	void AddPokemonWithAnyAttributeNull3() {
 		assertFalse(pokemonRepository.addPokemon("Ponita", "Fire", null, 10, 100, 5));
 	}
-	
+
 	@Test
 	@Order(3)
 	@DisplayName("Add 'any attribute null [4]' PokemonRepository")
 	void AddPokemonWithAnyAttributeNull4() {
 		assertFalse(pokemonRepository.addPokemon("Ponita", "Fire", 10, null, 100, 5));
 	}
-	
+
 	@Test
 	@Order(3)
 	@DisplayName("Add 'any attribute null [5]' PokemonRepository")
 	void AddPokemonWithAnyAttributeNull5() {
 		assertFalse(pokemonRepository.addPokemon("Ponita", "Fire", 10, 10, null, 5));
 	}
-	
+
 	@Test
 	@Order(3)
 	@DisplayName("Add 'any attribute null [6]' PokemonRepository")
 	void AddPokemonWithAnyAttributeNull6() {
 		assertFalse(pokemonRepository.addPokemon("Ponita", "Fire", 10, 10, 100, null));
 	}
-	
+
 	// ADD POKEMON [Empty atrribute]
 	/*
 	 * In the PokemonRepository the attributes are set through the Pokemon class The
 	 * validation of attributes is done by the set of methods of the Pokemon class.
 	 * Widely tested.
 	 */
-	
+
 	@Test
 	@Order(4)
 	@DisplayName("Add 'name empty [1]' PokemonRepository")
 	void AddPokemonWithEmptyName() {
 		assertFalse(pokemonRepository.addPokemon("", "Fire", 10, 10, 100, 5));
 	}
-	
+
 	@Test
 	@Order(4)
 	@DisplayName("Add 'element empty [2]' PokemonRepository")
@@ -139,21 +143,21 @@ class PokemonRepositoryTest {
 		assertFalse(pokemonRepository.addPokemon("Ponita", "", 10, 10, 100, 5));
 
 	}
-	
+
 	// ADD POKEMON [Invalid atrribute]
 	/*
 	 * In the PokemonRepository the attributes are set through the Pokemon class The
 	 * validation of attributes is done by the set of methods of the Pokemon class.
 	 * Widely tested.
 	 */
-	
+
 	@Test
 	@Order(5)
 	@DisplayName("Add 'invalid name' PokemonRepository")
 	void AddPokemonWithInvalidName() {
 		assertFalse(pokemonRepository.addPokemon("lowercase", "Fire", 10, 10, 100, 5));
 	}
-	
+
 	@Test
 	@Order(5)
 	@DisplayName("Add 'invalid element' PokemonRepository")
@@ -161,7 +165,7 @@ class PokemonRepositoryTest {
 		assertFalse(pokemonRepository.addPokemon("Ponita", "notElement", 10, 10, 100, 5));
 
 	}
-	
+
 	@Test
 	@Order(5)
 	@DisplayName("Add 'invalid attack' PokemonRepository")
@@ -169,28 +173,28 @@ class PokemonRepositoryTest {
 		assertFalse(pokemonRepository.addPokemon("Ponita", "Fire", 0, 10, 100, 5));
 
 	}
-	
+
 	@Test
 	@Order(5)
 	@DisplayName("Add 'invalid defense' PokemonRepository")
 	void AddPokemonWithInvalidDefense() {
 		assertFalse(pokemonRepository.addPokemon("Ponita", "Fire", 10, 0, 100, 5));
 	}
-	
+
 	@Test
 	@Order(5)
 	@DisplayName("Add 'invalid hp' PokemonRepository")
 	void AddPokemonWithInvaliHp() {
 		assertFalse(pokemonRepository.addPokemon("Ponita", "Fire", 10, 10, -1, 5));
 	}
-	
+
 	@Test
 	@Order(5)
 	@DisplayName("Add 'invalid speed' PokemonRepository")
 	void AddPokemonWithInvaliSpeed() {
 		assertFalse(pokemonRepository.addPokemon("Ponita", "Fire", 10, 10, 100, 0));
 	}
-	
+
 	// GET POKEMON
 
 	@Test
@@ -250,7 +254,6 @@ class PokemonRepositoryTest {
 	void fullListPokemon() {
 		pokemonRepository.addPokemon("Ditto", "Normal", 20, 20, 200, 10);
 		System.out.println(pokemonRepository.fullListPokemon());
-		assertEquals("Id 0 [Ditto] Normal Atk:20 Def:20 HP:200 Speed:10", pokemonRepository.fullListPokemon());
+		assertEquals("Id 0 [Ditto] Normal Atk:20 Def:20 HP:200 Speed:10\n", pokemonRepository.fullListPokemon());
 	}
-
 }

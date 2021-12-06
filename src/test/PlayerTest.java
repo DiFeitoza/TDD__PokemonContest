@@ -52,6 +52,13 @@ class PlayerTest {
 		assertFalse(player.setName(""));
 	}
 
+	@Test
+	@Order(1)
+	@DisplayName("Set 'null' in name")
+	void testSetNullName() {
+		assertFalse(player.setName(null));
+	}
+
 	// GET and SET ArrayList
 
 	@Test

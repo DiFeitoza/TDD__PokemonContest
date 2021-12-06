@@ -29,7 +29,7 @@ public class PokemonRepository {
 		}
 		return false;
 	}
-	
+
 	public boolean resetMapPokemon() {
 		this.mapPokemon = new HashMap<Integer, Pokemon>();
 		this.id = 0;
@@ -57,14 +57,14 @@ public class PokemonRepository {
 		}
 	}
 
-	public Pokemon getPokemon(Integer id) {
+	public Pokemon getPokemon(Integer idPoke) {
 		Set<Integer> keys = mapPokemon.keySet();
 		try {
 			for (Integer key : keys)
 				if (key != null)
-					if (key == id)
+					if (key == idPoke)
 						return mapPokemon.get(key);
-			throw new Exception("Pokemon id \"" + id + "\" não existe");
+			throw new Exception("Pokemon id " + idPoke + " não existe");
 		} catch (Exception e) {
 			System.out.println(e);
 			return null;
@@ -95,7 +95,7 @@ public class PokemonRepository {
 	public String fullListPokemon() {
 		StringBuilder builder = new StringBuilder();
 		for (Pokemon p : mapPokemon.values()) {
-			builder.append(p.toString());
+			builder.append(p.toString() + "\n");
 		}
 		return builder.toString();
 	}

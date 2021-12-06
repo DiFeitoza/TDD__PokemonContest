@@ -26,18 +26,18 @@ class PokemonControllerTest {
 	void tearDown() throws Exception {
 		pokemonController.resetMapPokemon();
 	}
-	
-	//SEED Repository
-	
+
+	// SEED Repository
+
 	@Test
-	@Order(2)
+	@Order(1)
 	@DisplayName("Seed repository from PokemonData")
 	void seedPokemonRepository() throws Exception {
 		assertTrue(pokemonController.seedPokemonRepository());
-		// the seed method imports 151 pokemons from 1st generation pokemon from data/pokemon.txt
+		// the seed method imports 151 pokemons from 1st generation pokemon from
+		// data/pokemon.txt
 		assertEquals(152, pokemonController.getRepositoryId());
 	}
-	
 
 	// ADD POKEMON [Valid]
 	/*
@@ -57,14 +57,14 @@ class PokemonControllerTest {
 	// ADD POKEMON [null attribute]
 
 	@Test
-	@Order(3)
+	@Order(2)
 	@DisplayName("Add 'any attribute null [1]' PokemonRepository")
 	void AddPokemonWithAnyAttributeNull1() {
 		assertFalse(pokemonController.addPokemon(null, "Fire", 10, 10, 100, 5));
 	}
 
 	@Test
-	@Order(3)
+	@Order(2)
 	@DisplayName("Add 'any attribute null [2]' PokemonRepository")
 	void AddPokemonWithAnyAttributeNull2() {
 		assertFalse(pokemonController.addPokemon("Ponita", null, 10, 10, 100, 5));
@@ -72,28 +72,28 @@ class PokemonControllerTest {
 	}
 
 	@Test
-	@Order(3)
+	@Order(2)
 	@DisplayName("Add 'any attribute null [3]' PokemonRepository")
 	void AddPokemonWithAnyAttributeNull3() {
 		assertFalse(pokemonController.addPokemon("Ponita", "Fire", null, 10, 100, 5));
 	}
 
 	@Test
-	@Order(3)
+	@Order(2)
 	@DisplayName("Add 'any attribute null [4]' PokemonRepository")
 	void AddPokemonWithAnyAttributeNull4() {
 		assertFalse(pokemonController.addPokemon("Ponita", "Fire", 10, null, 100, 5));
 	}
 
 	@Test
-	@Order(3)
+	@Order(2)
 	@DisplayName("Add 'any attribute null [5]' PokemonRepository")
 	void AddPokemonWithAnyAttributeNull5() {
 		assertFalse(pokemonController.addPokemon("Ponita", "Fire", 10, 10, null, 5));
 	}
 
 	@Test
-	@Order(3)
+	@Order(2)
 	@DisplayName("Add 'any attribute null [6]' PokemonRepository")
 	void AddPokemonWithAnyAttributeNull6() {
 		assertFalse(pokemonController.addPokemon("Ponita", "Fire", 10, 10, 100, null));
@@ -107,14 +107,14 @@ class PokemonControllerTest {
 	 */
 
 	@Test
-	@Order(4)
+	@Order(3)
 	@DisplayName("Add 'name empty [1]' PokemonRepository")
 	void AddPokemonWithEmptyName() {
 		assertFalse(pokemonController.addPokemon("", "Fire", 10, 10, 100, 5));
 	}
 
 	@Test
-	@Order(4)
+	@Order(3)
 	@DisplayName("Add 'element empty [2]' PokemonRepository")
 	void AddPokemonWithEmptyElement() {
 		assertFalse(pokemonController.addPokemon("Ponita", "", 10, 10, 100, 5));
@@ -129,14 +129,14 @@ class PokemonControllerTest {
 	 */
 
 	@Test
-	@Order(5)
+	@Order(4)
 	@DisplayName("Add 'invalid name' PokemonRepository")
 	void AddPokemonWithInvalidName() {
 		assertFalse(pokemonController.addPokemon("lowercase", "Fire", 10, 10, 100, 5));
 	}
 
 	@Test
-	@Order(5)
+	@Order(4)
 	@DisplayName("Add 'invalid element' PokemonRepository")
 	void AddPokemonWithInvalidElement() {
 		assertFalse(pokemonController.addPokemon("Ponita", "notElement", 10, 10, 100, 5));
@@ -144,7 +144,7 @@ class PokemonControllerTest {
 	}
 
 	@Test
-	@Order(5)
+	@Order(4)
 	@DisplayName("Add 'invalid attack' PokemonRepository")
 	void AddPokemonWithInvalidAttack() {
 		assertFalse(pokemonController.addPokemon("Ponita", "Fire", 0, 10, 100, 5));
@@ -152,21 +152,21 @@ class PokemonControllerTest {
 	}
 
 	@Test
-	@Order(5)
+	@Order(4)
 	@DisplayName("Add 'invalid defense' PokemonRepository")
 	void AddPokemonWithInvalidDefense() {
 		assertFalse(pokemonController.addPokemon("Ponita", "Fire", 10, 0, 100, 5));
 	}
 
 	@Test
-	@Order(5)
+	@Order(4)
 	@DisplayName("Add 'invalid hp' PokemonRepository")
 	void AddPokemonWithInvaliHp() {
 		assertFalse(pokemonController.addPokemon("Ponita", "Fire", 10, 10, -1, 5));
 	}
 
 	@Test
-	@Order(5)
+	@Order(4)
 	@DisplayName("Add 'invalid speed' PokemonRepository")
 	void AddPokemonWithInvaliSpeed() {
 		assertFalse(pokemonController.addPokemon("Ponita", "Fire", 10, 10, 100, 0));
@@ -175,7 +175,7 @@ class PokemonControllerTest {
 	// GET POKEMON
 
 	@Test
-	@Order(6)
+	@Order(5)
 	@DisplayName("Get 'existing pokemon' PokemonRepository")
 	void GetExistingPokemon() {
 		pokemonController.addPokemon("Rapidash", "Normal", 10, 10, 100, 5);
@@ -183,14 +183,14 @@ class PokemonControllerTest {
 	}
 
 	@Test
-	@Order(6)
+	@Order(5)
 	@DisplayName("Get 'out range index pokemon' PokemonRepository")
 	void GetOutRangeIndexPokemon() {
 		assertNull(pokemonController.getPokemon(1));
 	}
 
 	@Test
-	@Order(6)
+	@Order(5)
 	@DisplayName("Get 'negative indice' PokemonRepository")
 	void GetNegativeIndicePokemon() {
 		assertNull(pokemonController.getPokemon(-1));
@@ -199,7 +199,7 @@ class PokemonControllerTest {
 	// FIND POKEMON
 
 	@Test
-	@Order(7)
+	@Order(6)
 	@DisplayName("Find 'existing pokemon' PokemonRepository")
 	void FindExistingPokemon() {
 		pokemonController.addPokemon("Rapidash", "Normal", 10, 10, 100, 5);
@@ -207,7 +207,7 @@ class PokemonControllerTest {
 	}
 
 	@Test
-	@Order(7)
+	@Order(6)
 	@DisplayName("Find 'not existing pokemon' PokemonRepository")
 	void FindNotExistingPokemon() {
 		assertFalse(pokemonController.findPokemon(1));
@@ -216,7 +216,7 @@ class PokemonControllerTest {
 	// simpleListPokemon
 
 	@Test
-	@Order(8)
+	@Order(7)
 	@DisplayName("simpleList PokemonRepository")
 	void SimpleListPokemon() {
 		pokemonController.addPokemon("Ditto", "Normal", 20, 20, 200, 10);
@@ -226,11 +226,10 @@ class PokemonControllerTest {
 	// fullListPokemon
 
 	@Test
-	@Order(9)
+	@Order(8)
 	@DisplayName("fullList PokemonRepository")
 	void fullListPokemon() {
 		pokemonController.addPokemon("Ditto", "Normal", 20, 20, 200, 10);
-		assertEquals("Id 0 [Ditto] Normal Atk:20 Def:20 HP:200 Speed:10", pokemonController.fullListPokemon());
+		assertEquals("Id 0 [Ditto] Normal Atk:20 Def:20 HP:200 Speed:10\n", pokemonController.fullListPokemon());
 	}
-
 }
