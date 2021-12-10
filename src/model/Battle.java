@@ -203,7 +203,7 @@ public class Battle {
 	}
 
 	public void attackDamage(double mult, Pokemon pokeAttack, Pokemon pokeDefense) {
-		int atk = (int) (pokeAttack.getAttack() * mult);
+		int atk = (int) ((pokeAttack.getAttack() * mult) + 30);
 		int def = pokeDefense.getDefense();
 		int hp = pokeDefense.getHp();
 

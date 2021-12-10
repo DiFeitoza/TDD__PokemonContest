@@ -53,7 +53,24 @@ public class PokemonController {
 	}
 
 	public Pokemon getPokemon(int id) {
-		return pokemonRepository.getPokemon(id);
+		Pokemon poke = new Pokemon();
+		Pokemon copyPoke = new Pokemon();
+		poke = pokemonRepository.getPokemon(id);
+		
+		if(poke != null) {
+			copyPoke.setId(poke.getId());
+			copyPoke.setName(poke.getName());
+			copyPoke.setElement(poke.getElement());
+			copyPoke.setElement(poke.getElement());
+			copyPoke.setAttack(poke.getAttack());
+			copyPoke.setDefense(poke.getDefense());
+			copyPoke.setHp(poke.getHp());
+			copyPoke.setSpeed(poke.getSpeed());
+			return copyPoke;
+		}
+		else {
+			return poke;
+		}
 	}
 
 	public String simpleListPokemon() {

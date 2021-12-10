@@ -8,7 +8,7 @@ import controller.PokemonController;
 public class MainView {
 	private static PokemonController pokemonController = PokemonController.getInstance();
 	private static ChoosePokemonView choosePokemonView = ChoosePokemonView.getInstance();
-	private static FightPokemonView fightPokemonView = FightPokemonView.getInstance();
+	private static FightPokemonView fightPokemonView;
 	private static Scanner sc = new Scanner(System.in);
 	private static String opt = "s";
 
@@ -36,9 +36,9 @@ public class MainView {
 			case "b":
 				System.out.println("\n");
 				choosePokemonView.choosePokemonMenu();
+				fightPokemonView = FightPokemonView.getInstance();
 				fightPokemonView.fightPokemonMenu();
-				// pokemonController.rebootRepository();
-				return;
+				break;
 			case "e":
 				System.out.println("\n" + "GoodBye Mestre Pokemon!" + "\n");
 				System.exit(0);

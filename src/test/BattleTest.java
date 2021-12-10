@@ -598,7 +598,7 @@ class BattleTest {
 		Pokemon pokeDef = new Pokemon(1, "Blastoise", "Water", 10, 10, 100, 5);
 		Double mult = battle.damageMultiplier("Fire", "Water"); // mult = 0.5
 		battle.attackDamage(mult, pokeAtk, pokeDef);
-		assertEquals(99, pokeDef.getHp());
+		assertEquals(75, pokeDef.getHp());
 	}
 
 	@Test
@@ -609,7 +609,7 @@ class BattleTest {
 		Pokemon pokeDef = new Pokemon(0, "Ponita", "Fire", 10, 10, 100, 5);
 		Double mult = battle.damageMultiplier("Water", "Fire"); // mult = 2.0
 		battle.attackDamage(mult, pokeAtk, pokeDef);
-		assertEquals(90, pokeDef.getHp());
+		assertEquals(60, pokeDef.getHp());
 	}
 
 	@Test

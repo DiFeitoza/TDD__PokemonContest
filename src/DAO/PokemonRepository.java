@@ -62,7 +62,7 @@ public class PokemonRepository {
 		try {
 			for (Integer key : keys)
 				if (key != null)
-					if (key == idPoke)
+					if (key.equals(idPoke))
 						return mapPokemon.get(key);
 			throw new Exception("Pokemon id " + idPoke + " não existe");
 		} catch (Exception e) {

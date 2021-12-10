@@ -9,7 +9,6 @@ import model.Player;
 import model.Pokemon;
 
 public class FightPokemonView {
-	private static FightPokemonView fightPokemonView;
 	private static BattleController battleController = BattleController.getInstance();
 	private ArrayList<String> alivePokemonsP1 = new ArrayList<String>();
 	private ArrayList<String> alivePokemonsP2 = new ArrayList<String>();
@@ -22,10 +21,7 @@ public class FightPokemonView {
 	private static Scanner sc = new Scanner(System.in);
 
 	public static FightPokemonView getInstance() {
-		if (fightPokemonView == null) {
-			fightPokemonView = new FightPokemonView();
-		}
-		return fightPokemonView;
+		return new FightPokemonView();
 	}
 
 	public static int randonNumber(int min, int max) {
@@ -82,7 +78,7 @@ public class FightPokemonView {
 
 			if ((amountOfPokemon - defeatedPokemonsP1) > 1) {
 				System.out.println("\nQuem irá substituí-lo?\n");
-				
+
 				int i = 0;
 				for (Pokemon p : pokemonsP1) {
 					if (p.getHp() > 0) {
@@ -90,7 +86,7 @@ public class FightPokemonView {
 					}
 					i++;
 				}
-				
+
 				String input = "";
 				chooseP1 = -1;
 				while (chooseP1 < 0 || chooseP1 >= amountOfPokemon) {
@@ -166,15 +162,14 @@ public class FightPokemonView {
 			printStatusPokemon(pokeFightP1);
 			System.out.println("----------------------------------\n");
 
-			System.out.println(
-					"Escolha o tipo de ataque: " + "\n" + "1 - Ataque Corporal" + "\n" + "2 - Ataque Especial");
+			System.out.println("Selecione o tipo de ataque:\n" + "1 - Ataque Corporal\n" + "2 - Ataque Especial\n");
 
 			int typeAtkP1 = 0;
 			int typeAtkP2 = randonNumber(1, 2);
 
 			String input = sc.nextLine();
-			while (!input.equals("1") && !input.equals("2")) {
-				System.out.println("Ecolha 1 ou 2\n");
+			while (!input.equals("1") && !input.equals("2") && !input.equals("")) {
+				System.out.println("Ecolha 1, 2 ou tecle Enter\n");
 				input = sc.nextLine();
 				if (input.equals("1") || input.equals("2")) {
 					typeAtkP1 = Integer.parseInt(input);
@@ -183,12 +178,12 @@ public class FightPokemonView {
 			}
 
 			if (typeAtkP1 == 1)
-				battleController.attackDamage(0.0, pokeFightP1, pokeFightP2);
+				battleController.attackDamage(1.0, pokeFightP1, pokeFightP2);
 			else
 				battleController.attackDamage(mult, pokeFightP1, pokeFightP2);
 
-			if (typeAtkP2 == randonNumber(1, 2))
-				battleController.attackDamage(0.0, pokeFightP1, pokeFightP2);
+			if (typeAtkP2 == 1)
+				battleController.attackDamage(1.0, pokeFightP2, pokeFightP1);
 			else
 				battleController.attackDamage(mult, pokeFightP2, pokeFightP1);
 
@@ -229,7 +224,7 @@ public class FightPokemonView {
 		chooseP1 = -1;
 		String input = "";
 		while (chooseP1 < 0 || chooseP1 >= amountOfPokemon) {
-			System.out.println("\nEscolha um número valido...\n");
+			System.out.println("\nEscolha um número valido...");
 			input = sc.nextLine();
 			if (input.matches("\\d{1}")) {
 				chooseP1 = Integer.parseInt(input);
