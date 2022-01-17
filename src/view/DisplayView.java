@@ -24,11 +24,17 @@ public class DisplayView {
 		return pokedexDisplay;
 	}
 
-    public void print(PokedexPokemon pokemonData, String pokemonAbilitiesAndEffects) throws IOException {    	
-	    URL url = new URL(pokemonData.getImageUrl());
-	    
-	    BufferedImage bufferedImage = ImageIO.read(url);
-        ImageIcon imageIcon = new ImageIcon(bufferedImage);
+    public void print(PokedexPokemon pokemonData, String pokemonAbilitiesAndEffects){
+    	URL url;
+    	ImageIcon imageIcon = new ImageIcon();
+    	
+		try {
+			url = new URL(pokemonData.getImageUrl());
+		    BufferedImage bufferedImage = ImageIO.read(url);
+	        imageIcon = new ImageIcon(bufferedImage);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
         
         JFrame jFrame = new JFrame();
         JLabel jLabel = new JLabel();

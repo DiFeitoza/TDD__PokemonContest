@@ -29,6 +29,10 @@ public class PokedexPokemon {
 	public Integer getWeight() {
 		return weight;
 	}
+	
+	public List<PokemonType> getTypes(){
+		return types;
+	}
 
 	public String getStringTypes() {
 		StringBuilder builder = new StringBuilder();

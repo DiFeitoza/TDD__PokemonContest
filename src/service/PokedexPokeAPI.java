@@ -39,7 +39,7 @@ public class PokedexPokeAPI {
 	        
 	        conn.disconnect();
 	    } catch (IOException ex) {
-	        Logger.getLogger(PokedexPokeAPI.class.getName()).log(Level.SEVERE, null, ex);
+	        //Logger.getLogger(PokedexPokeAPI.class.getName()).log(Level.SEVERE, null, ex);
 	    }
 		return output;
 	}

@@ -1,6 +1,5 @@
 package controller;
 
-import java.io.IOException;
 import java.util.List;
 
 import com.google.gson.Gson;
@@ -13,13 +12,21 @@ import view.DisplayView;
 public class PokedexController {
 	private static PokedexController pokedexController;
 	private PokedexPokeAPI pokedexPokeAPI = PokedexPokeAPI.getInstance();
-	private DisplayView pokedexDisplay = DisplayView.getInstance();	
-
+	private DisplayView pokedexDisplay = DisplayView.getInstance();
+	
 	public static PokedexController getInstance() {
 		if (pokedexController == null) {
 			pokedexController  = new PokedexController();
 		}
 		return pokedexController;
+	}
+
+	public void setPokedexPokeAPI(PokedexPokeAPI pokedexPokeAPI) {
+		this.pokedexPokeAPI = pokedexPokeAPI;
+	}
+	
+	public void setPokedexDisplay(DisplayView pokedexDisplay) {
+		this.pokedexDisplay = pokedexDisplay;
 	}
 
 	public PokedexAbility parseEffectAbilitiesFromJson(String output){
@@ -33,7 +40,7 @@ public class PokedexController {
         PokedexPokemon data = gson.fromJson(new String(output.getBytes()), PokedexPokemon.class);
         return data;
     }
-	
+
 	public String getPokemonEffectsAndAbilities(List<String> abilities_urls){
     	StringBuilder builder = new StringBuilder();
     	for(String abilityUrl : abilities_urls) {
@@ -44,16 +51,16 @@ public class PokedexController {
     	return builder.toString();  
 	}
 	
+	public void printPokedexDisplay(PokedexPokemon pokedexPokemon, String pokemonAbilitiesAndEffects) {
+    	pokedexDisplay.print(pokedexPokemon, pokemonAbilitiesAndEffects);
+	}
+		
     public void printPokedexPokemonFromId(int id) {
-    	String pokemonUrl = "https://pokeapi.co/api/v2/pokemon/" + id;
+    	String pokemonUrl = "https://pokeapi.co/api/v2/pokemon/" + id + "/";
     	String pokemonData = pokedexPokeAPI.getDataPokeAPIFromUrl(pokemonUrl);
     	PokedexPokemon pokedexPokemon = parsePokemonFromJson(pokemonData);    	
     	List<String> abilities_urls = pokedexPokemon.getAbilitiesUrls();
     	String pokemonAbilitiesAndEffects = getPokemonEffectsAndAbilities(abilities_urls);
-    	try {
-    		pokedexDisplay.print(pokedexPokemon, pokemonAbilitiesAndEffects);
-    	} catch (IOException e) {
-    		e.printStackTrace();
-    	}
+    	printPokedexDisplay(pokedexPokemon, pokemonAbilitiesAndEffects);
     }
 }
