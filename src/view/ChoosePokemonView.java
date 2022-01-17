@@ -44,7 +44,7 @@ public class ChoosePokemonView {
 		int randonId;
 		boolean ok = true;
 		while (ok) {
-			randonId = randonNumber(1, 127);
+			randonId = randonNumber(1, 151);
 			for (Pokemon p : pokeList) {
 				if (p.getId() == randonId) {
 					System.out.println("Gary está pensando qual id escolher..." + "\n");

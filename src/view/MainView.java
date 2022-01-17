@@ -9,14 +9,16 @@ public class MainView {
 	private static PokemonController pokemonController = PokemonController.getInstance();
 	private static ChoosePokemonView choosePokemonView = ChoosePokemonView.getInstance();
 	private static FightPokemonView fightPokemonView;
+	private static PokedexView pokedexView = PokedexView.getInstace();
 	private static Scanner sc = new Scanner(System.in);
 	private static String opt = "s";
 
 	public static void mainMenu() throws IOException {
 		while (true) {
-			System.out.println("---------( MENU INICIAL )--------- " + "\n" + "\n" + "[S] Lista de Pokemons - Simples"
-					+ "\n" + "[C] Lista de Pokemons - Completa" + "\n" + "[B] Iniciar Batalha" + "\n"
-					+ "[E] Deixar o Game" + "\n" + "\n" + "---------( POKEMON UFC )----------" + "\n");
+			System.out.println("---------( MENU INICIAL )--------- " + "\n" + "\n" + "[P] Acessar a Pokedex" + "\n"
+					+ "[S] Lista de Pokemons - Simples" + "\n" + "[C] Lista de Pokemons - Completa" + "\n"
+					+ "[B] Iniciar Batalha" + "\n" + "[E] Deixar o Game" + "\n" + "\n"
+					+ "---------( POKEMON UFC )----------" + "\n");
 
 			opt = sc.nextLine();
 
@@ -25,6 +27,11 @@ public class MainView {
 			}
 
 			switch (opt) {
+			case "p":
+				System.out.println("\n");
+				System.out.println(pokemonController.simpleListPokemon());
+				pokedexView.main();
+				break;
 			case "s":
 				System.out.println("\n");
 				System.out.println(pokemonController.simpleListPokemon());
