@@ -12,7 +12,11 @@ public class PokedexView {
 		return new PokedexView();
 	}
 		
-	void printPokedexPokemonFromId(int id) {
+	public void setPokedexController(PokedexController pokedexController) {
+		this.pokedexController = pokedexController;
+	}
+	
+	public void printPokedexPokemonFromId(int id) {
 		pokedexController.printPokedexPokemonFromId(id);
 	}
 	
@@ -31,14 +35,15 @@ public class PokedexView {
 		}
 	}
 	
-	void main() {
-		while(true) {
-			
+	public void main() {
+		while(true) {	
 			System.out.println("Escolha um número entre 1 e 151:");
 			Integer id = validChoicedId();
 			printPokedexPokemonFromId(id);
 			
 			System.out.println("---------( MENU POKEDEX )---------\n");
+			System.out.println("A Pokedex foi gerada em nova janela");
+			System.out.println("Verifique a barra de tarefas!\n");
 			System.out.println("[Enter] Nova consulta");
 			System.out.println("[V] Voltar ao menu inicial");
 			System.out.println("\n---------( POKEMON UFC )----------");

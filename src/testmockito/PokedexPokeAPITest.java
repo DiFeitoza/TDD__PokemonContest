@@ -37,8 +37,6 @@ public class PokedexPokeAPITest {
 	@Before
 	public void open() {
 		closeable = MockitoAnnotations.openMocks(this);
-		cacheDataPokemon = generateDataFromCache("src/testmockito/cache_pokemon_id_120_PokeAPI.json");
-		cacheDataEffectAbilities = generateDataFromCache("src/testmockito/cache_effect_abilities_148_PokeAPI.json");
 	}
 
 	@After
